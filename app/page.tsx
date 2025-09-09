@@ -74,34 +74,35 @@ const HavanaCafe = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-sm border-b border-amber-500/20">
+      <nav className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-sm border-b border-gray-300/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-2">
-              <Coffee className="h-8 w-8 text-amber-400" />
-              <span className="text-xl font-bold text-amber-400">
+              <Coffee className="h-8 w-8 text-white-400" />
+              <span className="text-xl font-bold text-white-400">
                 Havana Cafe
               </span>
             </div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-8">
-                {["HOME", "ABOUT US", "MENU", "CONTACT"].map((item) => (
-                  <button
-                    key={item}
-                    onClick={() =>
-                      scrollToSection(item.toLowerCase().replace(" ", ""))
-                    }
-                    className={`px-3 py-2 text-sm font-medium tracking-wider transition-colors duration-200 ${
-                      currentSection === item.toLowerCase().replace(" ", "")
-                        ? "text-amber-400 border-b-2 border-amber-400"
-                        : "text-gray-300 hover:text-amber-400"
-                    }`}
-                  >
-                    {item}
-                  </button>
-                ))}
+              <div className="ml-10 flex items-baseline space-x-10">
+                {["HOME", "ABOUT", "MENU", "CONTACT"].map((item) => {
+                  const sectionId = item.toLowerCase();
+                  return (
+                    <button
+                      key={item}
+                      onClick={() => scrollToSection(sectionId)}
+                      className={`px-2 py-2 text-sm font-medium tracking-wider transition-colors duration-200 ${
+                        currentSection === sectionId
+                          ? "text-white border-b-2 border-white"
+                          : "text-gray-300 hover:text-white"
+                      }`}
+                    >
+                      {item}
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
@@ -109,7 +110,7 @@ const HavanaCafe = () => {
             <div className="md:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-gray-300 hover:text-amber-400"
+                className="text-gray-300"
               >
                 {isMenuOpen ? (
                   <X className="h-6 w-6" />
@@ -125,7 +126,7 @@ const HavanaCafe = () => {
         {isMenuOpen && (
           <div className="md:hidden bg-black/95 backdrop-blur-sm">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              {["HOME", "ABOUT US", "MENU", "CONTACT"].map((item) => (
+              {["HOME", "ABOUT", "MENU", "CONTACT"].map((item) => (
                 <button
                   key={item}
                   onClick={() =>
@@ -176,7 +177,7 @@ const HavanaCafe = () => {
             </p>
             <button
               onClick={() => scrollToSection("menu")}
-              className="mt-8 bg-amber-500 text-black px-8 py-3 rounded-lg font-semibold hover:bg-amber-400 transition-all duration-300 transform hover:scale-105"
+              className="mt-8 bg-white text-black px-8 py-3 rounded-lg font-semibold hover:bg-amber-400 transition-all duration-300 transform hover:scale-105"
             >
               Explore Our Menu
             </button>
@@ -185,13 +186,13 @@ const HavanaCafe = () => {
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-1 h-16 bg-gradient-to-b from-amber-400 to-transparent rounded-full"></div>
+          <div className="w-1 h-16 bg-gradient-to-b from-gray-400 to-transparent rounded-full"></div>
         </div>
       </section>
 
       {/* About Section */}
       <section
-        id="aboutus"
+        id="about"
         className="py-20 bg-gradient-to-b from-black to-gray-900"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
